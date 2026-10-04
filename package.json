@@ -1,0 +1,20 @@
+{
+  "name": "metawhats",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cliente de mensagens descentralizado com identidade MetaMask",
+  "scripts": {
+    "dev:server": "cd server && node index.js",
+    "dev:client": "cd client && npx vite --host --port 5174",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "install:all": "cd server && npm install && cd ../client && npm install",
+    "build:client": "cd client && npm run build",
+    "build": "npm run build:client",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "start:prod": "cross-env NODE_ENV=production node server/index.js"
+  },
+  "devDependencies": {
+    "concurrently": "^9.0.1",
+    "cross-env": "^7.0.3"
+  }
+}
