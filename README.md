@@ -120,7 +120,7 @@ Variáveis de ambiente do servidor (`server/.env`):
 | --- | --- | --- |
 | `NODE_ENV` | sim | `production` ativa validações estritas |
 | `METAWHATS_JWT_SECRET` (ou `OPENZAP_JWT_SECRET`) | sim em prod | Segredo HMAC para tokens REST (mín. 16 caracteres). Use uma string aleatória forte |
-| `METAWHATS_ALLOWED_ORIGINS` (ou `OPENZAP_ALLOWED_ORIGINS`) | sim em prod | Lista CSV de origens permitidas (CORS + Socket.IO), ex.: `https://zap.bix.ltda` |
+| `METAWHATS_ALLOWED_ORIGINS` (ou `OPENZAP_ALLOWED_ORIGINS`) | sim em prod | Lista CSV de origens permitidas (CORS + Socket.IO), ex.: `https://chat.franciscobruno.com` |
 | `PORT` | não | Porta do servidor (defeito 3001) |
 | `TRUST_PROXY_HOPS` | não | Saltos de proxy reverso à frente do servidor (defeito 1) |
 | `SSL_KEY_PATH` / `SSL_CERT_PATH` / `SSL_CHAIN_PATH` | opcional | Certificados TLS PEM (ou `LETSENCRYPT_DOMAIN` em Linux) |

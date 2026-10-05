@@ -1,0 +1,15 @@
+[Unit]
+Description=MetaWhats (OpenZap)
+After=network.target
+
+[Service]
+Type=simple
+User=site
+WorkingDirectory=/home/site/metawhats
+Environment=NODE_ENV=production
+ExecStart=/usr/bin/node server/index.js
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

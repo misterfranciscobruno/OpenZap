@@ -334,7 +334,7 @@ export function AuthProvider({ children }) {
         ) {
           const origin = typeof window !== 'undefined' ? window.location.origin : '';
           throw new Error(
-            `OZ_WC_ORIGIN: O URL «${origin}» não está permitido no Reown. Em cloud.reown.com → projeto → Domain (Allowed origins), adicione esse endereço completo, incluindo a porta se existir (ex.: https://zap.bix.ltda:5174). Guarde, aguarde ~1 min e tente de novo.`
+            `OZ_WC_ORIGIN: O URL «${origin}» não está permitido no Reown. Em cloud.reown.com → projeto → Domain (Allowed origins), adicione esse endereço completo (ex.: https://chat.franciscobruno.com). Guarde, aguarde ~1 min e tente de novo.`
           );
         }
         throw e;

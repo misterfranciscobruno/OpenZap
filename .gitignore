@@ -18,6 +18,13 @@ yarn-error.log*
 .env.*.local
 **/.env
 !**/.env.example
+!server/.env.example
+
+# Deploy local / chaves SSH (não publicar)
+deploy-staging/
+deploy/server.env.production
+site.ppk
+site.pem
 
 # Base de dados local
 *.db

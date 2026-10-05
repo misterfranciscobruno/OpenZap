@@ -25,8 +25,8 @@ export function startTurnServer() {
   const listeningPort = Number(process.env.TURN_PORT || 3478);
   const username = (process.env.TURN_USERNAME || "metawhats").trim();
   const credential = (process.env.TURN_PASSWORD || "metawhats-turn-relay").trim();
-  const realm = (process.env.TURN_REALM || "zap.bix.ltda").trim();
-  const publicHost = (process.env.TURN_PUBLIC_HOST || "zap.bix.ltda").trim();
+  const realm = (process.env.TURN_REALM || "chat.franciscobruno.com").trim();
+  const publicHost = (process.env.TURN_PUBLIC_HOST || "chat.franciscobruno.com").trim();
   const externalIp =
     (process.env.TURN_EXTERNAL_IP || "").trim() || detectPublicishIpv4() || null;
 

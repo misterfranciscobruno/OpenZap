@@ -28,7 +28,13 @@ export default defineConfig({
           cert: fs.readFileSync(certFile),
         }
       : undefined,
-    allowedHosts: ['zap.bix.ltda', 'bix.ltda', '.bix.ltda', 'localhost'],
+    allowedHosts: [
+      'chat.franciscobruno.com',
+      'franciscobruno.com',
+      'www.franciscobruno.com',
+      '.franciscobruno.com',
+      'localhost',
+    ],
     proxy: {
       '/api': { ...apiProxy },
       '/uploads': { ...apiProxy },
