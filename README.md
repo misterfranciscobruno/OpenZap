@@ -1,4 +1,4 @@
-# MetaWhats
+# OpenZap
 
 Cliente de mensagens descentralizado com identidade gerida pela carteira MetaMask.
 
@@ -34,7 +34,7 @@ Cliente de mensagens descentralizado com identidade gerida pela carteira MetaMas
 
 ```bash
 # Clonar ou navegar até à pasta do projeto
-cd metawhats
+cd openzap
 
 # Instalar todas as dependências
 npm install
@@ -80,7 +80,7 @@ Abrir **http://localhost:5173** no browser com MetaMask instalado.
 ## Arquitetura
 
 ```
-metawhats/
+openzap/
 ├── server/
 │   ├── index.js          # Servidor Express + Socket.IO
 │   ├── db.js             # Camada de dados SQLite
@@ -119,8 +119,8 @@ Variáveis de ambiente do servidor (`server/.env`):
 | Variável | Obrigatório | Descrição |
 | --- | --- | --- |
 | `NODE_ENV` | sim | `production` ativa validações estritas |
-| `METAWHATS_JWT_SECRET` (ou `OPENZAP_JWT_SECRET`) | sim em prod | Segredo HMAC para tokens REST (mín. 16 caracteres). Use uma string aleatória forte |
-| `METAWHATS_ALLOWED_ORIGINS` (ou `OPENZAP_ALLOWED_ORIGINS`) | sim em prod | Lista CSV de origens permitidas (CORS + Socket.IO), ex.: `https://chat.franciscobruno.com` |
+| `OPENZAP_JWT_SECRET` | sim em prod | Segredo HMAC para tokens REST (mín. 16 caracteres). Use uma string aleatória forte |
+| `OPENZAP_ALLOWED_ORIGINS` | sim em prod | Lista CSV de origens permitidas (CORS + Socket.IO), ex.: `https://chat.franciscobruno.com` |
 | `PORT` | não | Porta do servidor (defeito 3001) |
 | `TRUST_PROXY_HOPS` | não | Saltos de proxy reverso à frente do servidor (defeito 1) |
 | `SSL_KEY_PATH` / `SSL_CERT_PATH` / `SSL_CHAIN_PATH` | opcional | Certificados TLS PEM (ou `LETSENCRYPT_DOMAIN` em Linux) |
@@ -136,3 +136,8 @@ Variáveis de ambiente do servidor (`server/.env`):
 - Socket.IO: todos os eventos de conversa exigem autenticação **e** verificação de membro (incluindo `join_conversation`, `typing`, `message_read`, etc.)
 - `/uploads`: bloqueio de path traversal, dotfiles, sandbox CSP, `Cache-Control: no-store`, sem listagem de directório
 - Para uso em produção, considere adicionar encriptação de ponta a ponta com chaves derivadas da carteira
+
+## Repositório
+
+- **Produção:** [chat.franciscobruno.com](https://chat.franciscobruno.com)
+- **Código:** [github.com/misterfranciscobruno/OpenZap](https://github.com/misterfranciscobruno/OpenZap)

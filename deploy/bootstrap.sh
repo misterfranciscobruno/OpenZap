@@ -13,27 +13,27 @@ fi
 echo "==> Diretórios"
 sudo mkdir -p /var/www/franciscobruno
 sudo chown site:site /var/www/franciscobruno
-mkdir -p /home/site/metawhats
+mkdir -p /home/site/openzap
 
 echo "==> Landing page"
-cp -f /home/site/deploy-staging/landing/index.html /var/www/franciscobruno/
+cp -f /home/site/deploy/landing/index.html /var/www/franciscobruno/
 sudo chown -R www-data:www-data /var/www/franciscobruno
 
-echo "==> MetaWhats app"
+echo "==> OpenZap app"
 rsync -a --delete \
-  --exclude deploy-staging \
+  --exclude deploy \
   --exclude .git \
   --exclude node_modules \
-  /home/site/deploy-staging/app/ /home/site/metawhats/
+  /home/site/openzap-src/ /home/site/openzap/
 
-cd /home/site/metawhats
-cp -f /home/site/deploy-staging/server.env ./server/.env
+cd /home/site/openzap
+cp -f /home/site/deploy/server.env ./server/.env
 
 echo "==> npm install"
-cd /home/site/metawhats/server && npm ci --omit=dev 2>/dev/null || npm install --omit=dev
+cd /home/site/openzap/server && npm ci --omit=dev 2>/dev/null || npm install --omit=dev
 
 echo "==> Nginx"
-sudo cp /home/site/deploy-staging/nginx/franciscobruno.conf /etc/nginx/sites-available/franciscobruno
+sudo cp /home/site/deploy/nginx/franciscobruno.conf /etc/nginx/sites-available/franciscobruno
 sudo ln -sf /etc/nginx/sites-available/franciscobruno /etc/nginx/sites-enabled/
 sudo rm -f /etc/nginx/sites-enabled/default
 sudo nginx -t
@@ -41,10 +41,10 @@ sudo systemctl enable nginx
 sudo systemctl reload nginx
 
 echo "==> systemd"
-sudo cp /home/site/deploy-staging/metawhats.service /etc/systemd/system/metawhats.service
+sudo cp /home/site/deploy/openzap.service /etc/systemd/system/openzap.service
 sudo systemctl daemon-reload
-sudo systemctl enable metawhats
-sudo systemctl restart metawhats
+sudo systemctl enable openzap
+sudo systemctl restart openzap
 
 echo "==> Certbot TLS"
 sudo certbot --nginx --non-interactive --agree-tos --register-unsafely-without-email \
@@ -52,6 +52,6 @@ sudo certbot --nginx --non-interactive --agree-tos --register-unsafely-without-e
   || echo "WARN: certbot falhou — confirme DNS apontando para este servidor e rode certbot manualmente"
 
 echo "==> Firewall GCP: abra UDP 3478 e 49152-65535 para TURN/WebRTC"
-sudo systemctl status metawhats --no-pager || true
+sudo systemctl status openzap --no-pager || true
 curl -sI http://127.0.0.1:3001/ | head -3 || true
 echo "==> Deploy concluído"

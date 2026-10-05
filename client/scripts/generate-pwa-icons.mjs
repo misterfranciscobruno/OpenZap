@@ -17,17 +17,17 @@ async function main() {
     ({ default: sharp } = await import('sharp'));
   } catch {
     if (existsSync(out192) && existsSync(out512)) {
-      console.log('MetaWhats: sharp indisponível — a usar ícones PWA já presentes em public/.');
+      console.log('OpenZap: sharp indisponível — a usar ícones PWA já presentes em public/.');
       return;
     }
     console.error(
-      'MetaWhats: instale dependências (npm install no cliente) para gerar pwa-192.png / pwa-512.png, ou copie esses ficheiros para public/.'
+      'OpenZap: instale dependências (npm install no cliente) para gerar pwa-192.png / pwa-512.png, ou copie esses ficheiros para public/.'
     );
     process.exit(1);
   }
 
   if (!existsSync(svgPath)) {
-    console.error('MetaWhats: falta public/logo.svg');
+    console.error('OpenZap: falta public/logo.svg');
     process.exit(1);
   }
 
@@ -35,7 +35,7 @@ async function main() {
   for (const size of [192, 512]) {
     const out = join(publicDir, `pwa-${size}.png`);
     await sharp(svg).resize(size, size).png().toFile(out);
-    console.log('MetaWhats: escrito', out);
+    console.log('OpenZap: escrito', out);
   }
 }
 

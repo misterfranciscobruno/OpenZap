@@ -396,7 +396,7 @@ export function ChatProvider({ children }) {
 
     socket.on('connect', () => {
       if (!signature || !loginMessage) {
-        console.warn('MetaWhats: assinatura ou mensagem de login em falta; socket não autenticado.');
+        console.warn('OpenZap: assinatura ou mensagem de login em falta; socket não autenticado.');
         return;
       }
       socket.emit('authenticate', {
@@ -680,7 +680,7 @@ export function ChatProvider({ children }) {
       const name =
         typeof rawName === 'string' && rawName.trim().length > 0 ? rawName.trim() : 'Grupo';
       showInfoNotification({
-        title: 'MetaWhats',
+        title: 'OpenZap',
         body: `Você agora é administrador de «${name}». Abra o grupo para gerenciar permissões.`,
         tag: `openzap-promo-admin-${String(convId)}`,
         silent: false,

@@ -1,5 +1,5 @@
 /**
- * Simula a corrida MetaWhats: oferta chega antes do PC do destinatário.
+ * Simula a corrida OpenZap: oferta chega antes do PC do destinatário.
  * Sem wait → oferta perdida. Com wait → answer + tracks OK.
  */
 import { chromium } from 'playwright-core';

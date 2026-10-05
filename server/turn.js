@@ -10,7 +10,7 @@ const require = createRequire(import.meta.url);
 export function startTurnServer() {
   const enabled = String(process.env.TURN_ENABLED || "1").trim() !== "0";
   if (!enabled) {
-    console.log("MetaWhats TURN: desativado (TURN_ENABLED=0)");
+    console.log("OpenZap TURN: desativado (TURN_ENABLED=0)");
     return null;
   }
 
@@ -18,13 +18,13 @@ export function startTurnServer() {
   try {
     Turn = require("node-turn");
   } catch (err) {
-    console.warn("MetaWhats TURN: pacote node-turn indisponível:", err?.message || err);
+    console.warn("OpenZap TURN: pacote node-turn indisponível:", err?.message || err);
     return null;
   }
 
   const listeningPort = Number(process.env.TURN_PORT || 3478);
-  const username = (process.env.TURN_USERNAME || "metawhats").trim();
-  const credential = (process.env.TURN_PASSWORD || "metawhats-turn-relay").trim();
+  const username = (process.env.TURN_USERNAME || "openzap").trim();
+  const credential = (process.env.TURN_PASSWORD || "openzap-turn-relay").trim();
   const realm = (process.env.TURN_REALM || "chat.franciscobruno.com").trim();
   const publicHost = (process.env.TURN_PUBLIC_HOST || "chat.franciscobruno.com").trim();
   const externalIp =
@@ -50,7 +50,7 @@ export function startTurnServer() {
     const server = new Turn(opts);
     server.start();
     console.log(
-      `MetaWhats TURN: a escutar UDP :${listeningPort}` +
+      `OpenZap TURN: a escutar UDP :${listeningPort}` +
         (externalIp ? ` (external ${externalIp})` : "") +
         ` host=${publicHost}`
     );
@@ -63,7 +63,7 @@ export function startTurnServer() {
       externalIp,
     };
   } catch (err) {
-    console.error("MetaWhats TURN: falha ao arrancar:", err?.message || err);
+    console.error("OpenZap TURN: falha ao arrancar:", err?.message || err);
     return null;
   }
 }

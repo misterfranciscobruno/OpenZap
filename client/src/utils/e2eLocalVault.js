@@ -12,7 +12,7 @@ const VAULT_PIN_LEGACY = 2;
 const te = new TextEncoder();
 
 /** Não alterar: chaves e ciphertexts guardados dependem disto. */
-export const E2E_STORAGE_WRAP_MESSAGE = 'MetaWhats Local Vault Wrap v1';
+export const E2E_STORAGE_WRAP_MESSAGE = 'OpenZap Local Vault Wrap v1';
 
 function b64encode(bytes) {
   let bin = '';

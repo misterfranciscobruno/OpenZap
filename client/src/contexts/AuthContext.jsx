@@ -164,7 +164,7 @@ export function AuthProvider({ children }) {
       sessionStorage.setItem(SS_MSG, msg);
       localStorage.setItem(authLocalKey(a), JSON.stringify({ sig, msg, v: 1 }));
     } catch (err) {
-      console.warn('MetaWhats: não foi possível guardar credenciais do socket:', err);
+      console.warn('OpenZap: não foi possível guardar credenciais do socket:', err);
     }
   }, []);
 
@@ -254,7 +254,7 @@ export function AuthProvider({ children }) {
           clearPersistedWalletCredentials(savedAddress);
         }
       } catch (e) {
-        if (!cancelled) console.error('MetaWhats: falha ao restaurar sessão:', e);
+        if (!cancelled) console.error('OpenZap: falha ao restaurar sessão:', e);
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -288,7 +288,7 @@ export function AuthProvider({ children }) {
       const projectId = (import.meta.env.VITE_WALLETCONNECT_PROJECT_ID || '').trim();
       if (!projectId) {
         throw new Error(
-          'Defina VITE_WALLETCONNECT_PROJECT_ID no build do cliente (grátis em https://cloud.reown.com) e inclua o domínio do site em «Allowed domains». Sem isso, o Safari no celular não consegue conectar com a MetaMask. Alternativa: abrir o MetaWhats no navegador integrado do app MetaMask.'
+          'Defina VITE_WALLETCONNECT_PROJECT_ID no build do cliente (grátis em https://cloud.reown.com) e inclua o domínio do site em «Allowed domains». Sem isso, o Safari no celular não consegue conectar com a MetaMask. Alternativa: abrir o OpenZap no navegador integrado do app MetaMask.'
         );
       }
 
@@ -309,7 +309,7 @@ export function AuthProvider({ children }) {
             },
           },
           metadata: {
-            name: 'MetaWhats',
+            name: 'OpenZap',
             description: 'Mensagens descentralizadas',
             url: window.location.origin,
             icons: [`${window.location.origin}/favicon.ico`],
@@ -383,7 +383,7 @@ export function AuthProvider({ children }) {
         const json = await sealDerivationWithWrapSig(a, sig, wrapSig);
         localStorage.setItem(e2eDerivationLocalKey(a), json);
       } catch (err) {
-        console.warn('MetaWhats: cofre local não guardado (assinatura cancelada ou erro):', err);
+        console.warn('OpenZap: cofre local não guardado (assinatura cancelada ou erro):', err);
       }
     },
     [hydrateKeysFromSignature, ensureWalletConnected]
@@ -520,7 +520,7 @@ export function AuthProvider({ children }) {
       if (!nonceRes.ok) throw new Error('Erro ao obter nonce');
       const { nonce } = await nonceRes.json();
 
-      const message = `MetaWhats Login\nNonce: ${nonce}`;
+      const message = `OpenZap Login\nNonce: ${nonce}`;
       const sig = await eip1193PersonalSign(eth, addr, message);
 
       const body = { address: addr, signature: sig };
@@ -571,7 +571,7 @@ export function AuthProvider({ children }) {
       return null;
     }
     const { nonce } = await nr.json();
-    const message = `MetaWhats Profile Read\nNonce: ${nonce}`;
+    const message = `OpenZap Profile Read\nNonce: ${nonce}`;
     const signature = await eip1193PersonalSign(eth, addr, message);
     const res = await fetch('/api/users/profile', {
       method: 'POST',

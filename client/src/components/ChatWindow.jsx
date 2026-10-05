@@ -179,9 +179,9 @@ function formatRecSeconds(s) {
 function e2eSendErrorMessage(code) {
   switch (code) {
     case 'no_e2e_keys':
-      return 'Criptografia E2E indisponível. Entre novamente com a carteira (assinatura MetaWhats).';
+      return 'Criptografia E2E indisponível. Entre novamente com a carteira (assinatura OpenZap).';
     case 'peer_no_keys':
-      return 'O contato ainda não publicou a chave E2E. Peça para essa pessoa sair e entrar de novo no MetaWhats para registrar a chave.';
+      return 'O contato ainda não publicou a chave E2E. Peça para essa pessoa sair e entrar de novo no OpenZap para registrar a chave.';
     case 'no_shared_secret':
       return 'Não foi possível calcular o segredo compartilhado com este contato.';
     case 'no_group_dek':
@@ -1156,7 +1156,7 @@ export default function ChatWindow() {
             💬
           </div>
           <h2 className="text-xl font-light text-whatsapp-text mb-2">
-            MetaWhats
+            OpenZap
           </h2>
           <p className="text-sm leading-relaxed">
             Envie e receba mensagens. Selecione uma conversa na lista para começar.

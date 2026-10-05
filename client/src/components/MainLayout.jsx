@@ -15,7 +15,7 @@ function entityId(e) {
   return e._id ?? e.id;
 }
 
-function MetaWhatsMark({ className = '' }) {
+function OpenZapMark({ className = '' }) {
   return (
     <svg
       className={className}
@@ -43,8 +43,8 @@ function EmptyChatState() {
   return (
     <div className="flex min-h-0 flex-1 flex-col items-center justify-center border-l border-white/[0.05] bg-whatsapp-chat px-6 text-center md:px-10">
       <div className="max-w-[22rem] rounded-3xl border border-white/[0.06] bg-white/[0.02] px-8 py-10 shadow-[0_24px_80px_rgba(0,0,0,0.35)]">
-        <MetaWhatsMark className="mx-auto mb-5 h-20 w-20 opacity-95" />
-        <h2 className="text-xl font-semibold tracking-tight text-zinc-50">MetaWhats</h2>
+        <OpenZapMark className="mx-auto mb-5 h-20 w-20 opacity-95" />
+        <h2 className="text-xl font-semibold tracking-tight text-zinc-50">OpenZap</h2>
         <p className="mt-2 text-[15px] leading-relaxed text-zinc-400">
           Escolha uma conversa na lista — ou crie uma nova — e comece a falar com quem confia.
         </p>

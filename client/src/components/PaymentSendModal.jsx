@@ -137,7 +137,7 @@ export default function PaymentSendModal({ open, onClose, recipientAddress, onPa
 
           <p className="text-[11px] leading-relaxed text-whatsapp-text-secondary">
             A sua carteira vai pedir confirmação na blockchain. Isto não é uma transação feita pelo servidor
-            MetaWhats — só a carteira assina. Depois de enviado, regista-se na conversa o hash da transação
+            OpenZap — só a carteira assina. Depois de enviado, regista-se na conversa o hash da transação
             para o destinatário confirmar no explorador.
           </p>
 

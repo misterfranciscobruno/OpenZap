@@ -6,7 +6,7 @@ import {
   requestNotificationPermission,
 } from '../utils/browserNotifications';
 
-const DISMISS_KEY = 'metawhats_notif_prompt_dismissed';
+const DISMISS_KEY = 'openzap_notif_prompt_dismissed';
 
 export default function NotificationPermissionStrip() {
   const [perm, setPerm] = useState(() => getNotificationPermission());

@@ -24,7 +24,7 @@ const STEPS = [
   {
     icon: HiSparkles,
     title: 'Pronto para começar',
-    body: 'Crie uma conversa ou abra a lista. Quando quiser, instale o MetaWhats na tela inicial para abrir como app.',
+    body: 'Crie uma conversa ou abra a lista. Quando quiser, instale o OpenZap na tela inicial para abrir como app.',
   },
 ];
 
@@ -111,7 +111,7 @@ export default function FirstUseOnboarding({ address, onDone }) {
             onClick={finish}
             className="w-full rounded-xl bg-emerald-500 py-3.5 text-[15px] font-semibold text-zinc-950 hover:bg-emerald-400 touch-manipulation sm:mx-auto sm:max-w-xs"
           >
-            Entrar no MetaWhats
+            Entrar no OpenZap
           </button>
         )}
       </div>

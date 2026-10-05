@@ -1,7 +1,7 @@
 {
   "id": "/",
-  "name": "MetaWhats",
-  "short_name": "MetaWhats",
+  "name": "OpenZap",
+  "short_name": "OpenZap",
   "description": "Mensagens com identidade Ethereum",
   "start_url": "/",
   "scope": "/",

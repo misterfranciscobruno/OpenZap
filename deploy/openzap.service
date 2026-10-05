@@ -1,11 +1,11 @@
 [Unit]
-Description=MetaWhats (OpenZap)
+Description=OpenZap
 After=network.target
 
 [Service]
 Type=simple
 User=site
-WorkingDirectory=/home/site/metawhats
+WorkingDirectory=/home/site/openzap
 Environment=NODE_ENV=production
 ExecStart=/usr/bin/node server/index.js
 Restart=always

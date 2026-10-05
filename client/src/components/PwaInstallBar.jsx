@@ -18,7 +18,7 @@ function isIosSafariLike() {
   return webkit && notOther;
 }
 
-const IOS_HINT_KEY = 'metawhats_pwa_ios_hint_dismissed';
+const IOS_HINT_KEY = 'openzap_pwa_ios_hint_dismissed';
 
 export default function PwaInstallBar() {
   const [standalone, setStandalone] = useState(() => isStandaloneDisplay());
@@ -100,7 +100,7 @@ export default function PwaInstallBar() {
               onClick={runInstall}
               className="mt-2 rounded-md bg-whatsapp-green px-3 py-1.5 text-xs font-semibold text-whatsapp-on-primary hover:opacity-90"
             >
-              Instalar MetaWhats
+              Instalar OpenZap
             </button>
           </div>
         </div>

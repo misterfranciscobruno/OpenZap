@@ -7,7 +7,7 @@
  * - Safari iOS: notificações em segundo plano com o site só no Safari são limitadas; a partir do iOS 16.4, Web Push exige app na página inicial (standalone) + subscrição no servidor (não implementado aqui).
  */
 
-const DEFAULT_TITLE = 'MetaWhats';
+const DEFAULT_TITLE = 'OpenZap';
 
 function notificationIconUrl() {
   if (typeof window === 'undefined') return undefined;
@@ -77,7 +77,7 @@ export function showInfoNotification({
       n.close();
     };
   } catch (err) {
-    console.warn('MetaWhats: falha ao mostrar notificação', err);
+    console.warn('OpenZap: falha ao mostrar notificação', err);
   }
 }
 
@@ -113,7 +113,7 @@ export async function registerOpenZapServiceWorker() {
     });
     return reg;
   } catch (err) {
-    console.warn('MetaWhats: registo do service worker ignorado', err);
+    console.warn('OpenZap: registo do service worker ignorado', err);
     return null;
   }
 }

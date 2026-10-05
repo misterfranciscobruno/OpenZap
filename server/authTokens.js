@@ -43,14 +43,14 @@ function getMinIatCached(address) {
 
 function getJwtSecret() {
   const s =
-    process.env.METAWHATS_JWT_SECRET?.trim() || process.env.OPENZAP_JWT_SECRET?.trim();
+    process.env.OPENZAP_JWT_SECRET?.trim() || process.env.METAWHATS_JWT_SECRET?.trim();
   if (s && s.length >= 16) return s;
   if (process.env.NODE_ENV === "production") {
     throw new Error(
-      "METAWHATS_JWT_SECRET (ou OPENZAP_JWT_SECRET) deve estar definido em produção (mín. 16 caracteres)."
+      "OPENZAP_JWT_SECRET (legado: METAWHATS_JWT_SECRET) deve estar definido em produção (mín. 16 caracteres)."
     );
   }
-  return "metawhats-dev-only-insecure-secret";
+  return "openzap-dev-only-insecure-secret";
 }
 
 /**

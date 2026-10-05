@@ -121,7 +121,7 @@ function loadTlsOptions() {
   if (!keyPath || !certPath) return null;
   if (!existsSync(keyPath) || !existsSync(certPath)) {
     console.warn(
-      "MetaWhats: TLS em falta — verifique SSL_KEY_PATH e SSL_CERT_PATH (ex.: privkey.pem e fullchain.pem do Let's Encrypt)."
+      "OpenZap: TLS em falta — verifique SSL_KEY_PATH e SSL_CERT_PATH (ex.: privkey.pem e fullchain.pem do Let's Encrypt)."
     );
     return null;
   }
@@ -131,7 +131,7 @@ function loadTlsOptions() {
     if (caPath && existsSync(caPath)) opts.ca = readFileSync(caPath);
     return opts;
   } catch (err) {
-    console.error("MetaWhats: erro ao ler certificados TLS:", err.message);
+    console.error("OpenZap: erro ao ler certificados TLS:", err.message);
     return null;
   }
 }
@@ -147,7 +147,7 @@ const httpServer = tlsOptions
 const isProduction = process.env.NODE_ENV === "production";
 
 const allowedCorsOrigins = (
-  process.env.METAWHATS_ALLOWED_ORIGINS || process.env.OPENZAP_ALLOWED_ORIGINS || ""
+  process.env.OPENZAP_ALLOWED_ORIGINS || process.env.METAWHATS_ALLOWED_ORIGINS || ""
 )
   .split(",")
   .map((s) => s.trim().replace(/\/+$/, ""))
@@ -155,7 +155,7 @@ const allowedCorsOrigins = (
 
 if (isProduction && allowedCorsOrigins.length === 0) {
   throw new Error(
-    "METAWHATS_ALLOWED_ORIGINS (ou OPENZAP_ALLOWED_ORIGINS) é obrigatório em produção (lista separada por vírgulas)."
+    "OPENZAP_ALLOWED_ORIGINS (legado: METAWHATS_ALLOWED_ORIGINS) é obrigatório em produção (lista separada por vírgulas)."
   );
 }
 
@@ -1245,7 +1245,7 @@ if (serveClientStatic) {
     res.setHeader("Cache-Control", "no-store");
     res.sendFile(indexHtml);
   });
-  console.log(`MetaWhats: a servir cliente est\u00e1tico de ${clientDistDir}`);
+  console.log(`OpenZap: a servir cliente est\u00e1tico de ${clientDistDir}`);
 }
 
 io.on("connection", (socket) => {
@@ -1903,5 +1903,5 @@ io.on("connection", (socket) => {
 const PORT = Number(process.env.PORT || 3001);
 httpServer.listen(PORT, () => {
   const mode = tlsOptions ? "HTTPS (TLS)" : "HTTP";
-  console.log(`MetaWhats server running on port ${PORT} (${mode})`);
+  console.log(`OpenZap server running on port ${PORT} (${mode})`);
 });

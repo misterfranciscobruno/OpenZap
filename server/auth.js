@@ -7,9 +7,9 @@ import {
   pruneOldLoginSignatureDeny,
 } from "./db.js";
 
-/** Prefixos legíveis na carteira; manter OpenZap aceite para sessões antigas (socket / mensagem guardada). */
+/** Prefixos legíveis na carteira; aceitar legado MetaWhats para sessões já assinadas. */
 const LOGIN_PREFIX_OPENZAP = "OpenZap Login\nNonce:";
-const LOGIN_PREFIX_METAWHATS = "MetaWhats Login\nNonce:";
+const LOGIN_PREFIX_LEGACY_METAWHATS = "MetaWhats Login\nNonce:";
 
 /** Tempo de vida e capacidade dos mapas de nonces (mitigar pressão de memória). */
 const NONCE_TTL_MS = 5 * 60 * 1000; // 5 minutos
@@ -81,8 +81,8 @@ export function verifySignature(address, signature) {
   if (!nonce) return false;
 
   const candidates = [
-    `MetaWhats Login\nNonce: ${nonce}`,
     `OpenZap Login\nNonce: ${nonce}`,
+    `MetaWhats Login\nNonce: ${nonce}`,
   ];
 
   for (const message of candidates) {
@@ -142,7 +142,7 @@ export function verifyLoginMessage(address, message, signature) {
   const normalized = normalizeLoginMessageText(message);
   if (
     !normalized.startsWith(LOGIN_PREFIX_OPENZAP) &&
-    !normalized.startsWith(LOGIN_PREFIX_METAWHATS)
+    !normalized.startsWith(LOGIN_PREFIX_LEGACY_METAWHATS)
   ) {
     return false;
   }
@@ -177,8 +177,8 @@ export function verifyAndConsumeProfileRead(address, message, signature) {
   if (!nonce) return false;
   const normalized = normalizeLoginMessageText(message);
   const expectedOpenZap = `OpenZap Profile Read\nNonce: ${nonce}`;
-  const expectedMetaWhats = `MetaWhats Profile Read\nNonce: ${nonce}`;
-  if (normalized !== expectedOpenZap && normalized !== expectedMetaWhats) return false;
+  const expectedLegacyMetaWhats = `MetaWhats Profile Read\nNonce: ${nonce}`;
+  if (normalized !== expectedOpenZap && normalized !== expectedLegacyMetaWhats) return false;
   profileReadNonces.delete(addr);
   try {
     const recovered = ethers.verifyMessage(normalized, sig).toLowerCase();

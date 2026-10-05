@@ -3,6 +3,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { IoWallet } from 'react-icons/io5';
 
 import { useAuth } from '../contexts/AuthContext';
+import SiteFooter from './SiteFooter';
 
 import {
 
@@ -160,7 +161,7 @@ export default function SessionReconnect() {
 
       setError(
 
-        'Defina VITE_WALLETCONNECT_PROJECT_ID no build (cloud.reown.com + Allowed domains) ou abra o MetaWhats no navegador do app MetaMask e toque novamente em «Assinar e continuar».'
+        'Defina VITE_WALLETCONNECT_PROJECT_ID no build (cloud.reown.com + Allowed domains) ou abra o OpenZap no navegador do app MetaMask e toque novamente em «Assinar e continuar».'
 
       );
 
@@ -256,7 +257,7 @@ export default function SessionReconnect() {
 
             ), o domínio em Allowed domains, novo <code className="text-amber-50">npm run build</code>, e
 
-            publique. <strong className="text-amber-100">Alternativa:</strong> abrir o MetaWhats no
+            publique. <strong className="text-amber-100">Alternativa:</strong> abrir o OpenZap no
             navegador da MetaMask e usar «Verificar novamente».
 
           </p>
@@ -372,6 +373,8 @@ export default function SessionReconnect() {
         {busy ? 'Aguardando a carteira…' : 'Assinar e continuar'}
 
       </button>
+
+      <SiteFooter className="mt-10 pb-[max(1rem,env(safe-area-inset-bottom))]" />
 
     </div>
 

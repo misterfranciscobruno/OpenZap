@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { IoWallet, IoShieldCheckmark } from 'react-icons/io5';
 import { HiChatBubbleLeftRight, HiLockClosed } from 'react-icons/hi2';
 import { useAuth } from '../contexts/AuthContext';
+import SiteFooter from './SiteFooter';
 import {
   hasBrowserWalletInjection,
   isIOS,
@@ -16,7 +17,7 @@ import {
 const METAMASK_URL = 'https://metamask.io/download/';
 const REOWN_CLOUD = 'https://cloud.reown.com/';
 
-function MetaWhatsLogo({ className = '' }) {
+function OpenZapLogo({ className = '' }) {
   return (
     <svg
       className={className}
@@ -218,8 +219,8 @@ export default function Login() {
       <div className="relative z-10 flex min-h-min w-full items-start justify-center p-4 pb-10 sm:p-6 sm:pb-12">
         <div className="oz-animate-login my-4 w-full max-w-md rounded-2xl border border-whatsapp-border/40 bg-whatsapp-sidebar/95 p-6 shadow-2xl shadow-black/40 backdrop-blur-sm transition-transform duration-300 sm:p-8 sm:hover:scale-[1.01]">
           <div className="flex flex-col items-center text-center">
-            <MetaWhatsLogo className="mb-5 h-24 w-24 drop-shadow-lg" />
-            <h1 className="text-3xl font-semibold tracking-tight text-whatsapp-text">MetaWhats</h1>
+            <OpenZapLogo className="mb-5 h-24 w-24 drop-shadow-lg" />
+            <h1 className="text-3xl font-semibold tracking-tight text-whatsapp-text">OpenZap</h1>
             <p className="mt-2 text-sm leading-relaxed text-whatsapp-text-secondary">
               Mensagens descentralizadas. Sua identidade, sua carteira.
             </p>
@@ -314,14 +315,14 @@ export default function Login() {
                     >
                       cloud.reown.com
                     </a>
-                    . No painel do projeto, adicione o domínio do MetaWhats em{' '}
+                    . No painel do projeto, adicione o domínio do OpenZap em{' '}
                     <strong className="text-amber-100">Allowed domains</strong>, execute novamente{' '}
                     <code className="text-amber-50">npm run build</code> e publique o{' '}
                     <code className="text-amber-50">dist</code>. Depois «Conectar carteira» abre o fluxo
                     WalletConnect.
                   </p>
                   <p className="mt-2 text-xs text-amber-100/75">
-                    <strong className="text-amber-100">Sem WalletConnect no build:</strong> abra o MetaWhats
+                    <strong className="text-amber-100">Sem WalletConnect no build:</strong> abra o OpenZap
                     no navegador integrado da MetaMask (ou use os atalhos abaixo).
                   </p>
                   {httpWarning && (
@@ -536,6 +537,7 @@ export default function Login() {
           )}
         </div>
       </div>
+      <SiteFooter className="relative z-10 pb-[max(1rem,env(safe-area-inset-bottom))] pt-6" />
     </div>
   );
 }

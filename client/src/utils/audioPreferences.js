@@ -2,7 +2,7 @@
  * Preferências de áudio (mic/saída/volumes/processamento) — localStorage.
  */
 
-export const AUDIO_PREFS_KEY = 'metawhats_audio_prefs_v1';
+export const AUDIO_PREFS_KEY = 'openzap_audio_prefs_v1';
 
 export const DEFAULT_AUDIO_PREFS = Object.freeze({
   inputDeviceId: '',

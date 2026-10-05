@@ -11,7 +11,7 @@ export default class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, info) {
-    console.error('MetaWhats:', error, info?.componentStack);
+    console.error('OpenZap:', error, info?.componentStack);
   }
 
   render() {

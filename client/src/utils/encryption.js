@@ -29,7 +29,7 @@ export function deriveKeyPairFromSignature(signature) {
 export async function deriveEncryptionKeys() {
   const eth = getEthereumProvider();
   if (!eth) {
-    throw new Error('Carteira não disponível. Abra o MetaWhats no navegador da MetaMask.');
+    throw new Error('Carteira não disponível. Abra o OpenZap no navegador da MetaMask.');
   }
   let accounts = await eth.request({ method: 'eth_accounts' });
   if (!accounts || accounts.length === 0) {
